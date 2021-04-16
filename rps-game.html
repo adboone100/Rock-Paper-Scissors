@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Page Title</title>
+
+</head>
+<body>
+  <script>
+    // Your JavaScript goes here!
+    
+
+//-Computer randomly selects 1-3 
+
+
+//-user inputs 'rock' 'paper' or scissors
+
+
+
+
+let player = 0;
+let PC = 0;
+
+
+let getComputerChoice = () => {
+    let randomNum = Math.round(Math.random()) + Math.round(Math.random());
+    let choiceStack = ['rock', 'paper', 'scissors'];
+    return choiceStack[randomNum];
+}
+
+
+let getUserChoice = () => {
+  let userChoice = prompt('rock ---- paper ---- scissors').toLowerCase();
+  if(userChoice == 'rock' || userChoice == 'paper' || userChoice == 'scissors'){
+    return userChoice;
+  }
+  else{
+    alert('try again...');
+    getUserChoice;
+  }
+}
+
+
+let playGame = (userChoice) => {
+    const computerChoice = getComputerChoice();
+    const userSelect = getUserChoice();
+    if (Boolean(userSelect)){
+      console.log('You chose ' + userSelect + ' -------- the computer chose ' + computerChoice);
+    }
+    else{
+      console.log('....you messed up.')
+    }
+    
+    if (userSelect === computerChoice){
+        console.log("You Tied :/")
+        }
+        else if (userSelect === 'rock' && computerChoice === 'scissors'){
+        console.log("You WON!!!!!")
+        return player++;
+        }
+        else if (userSelect === 'paper' && computerChoice === 'rock'){
+        console.log("You WON!!!!!")
+        return player++;
+        }
+        else if (userSelect === 'scissors' && computerChoice === 'paper'){
+        console.log("You WON!!!!!")
+        return player++;
+        }
+        else if (userSelect === 'rock' && computerChoice === 'paper'){
+        console.log("...You Lost :(((((")
+        return PC++;
+        }
+        else if (userSelect === 'paper' && computerChoice === 'scissors'){
+        console.log("...You Lost :(((((")
+        return PC++;
+        }
+        else if (userSelect === 'scissors' && computerChoice === 'rock'){
+        console.log("...You Lost :(((((")
+        return PC++;
+        }
+    
+}
+
+
+let keepScore = (a,b) => {
+    console.log("You: " + a + " ---- Computer: " + b);
+}
+    
+while (player < 5 && PC < 5){
+playGame();
+keepScore(player, PC);
+restart(player, PC);
+}
+
+function restart(a, b){
+  if(a == 5 || b == 5)
+  {
+    alert('GAME OVERRRRR ------ F5 to play again :)');
+  }
+}
+//-convert into 1-3
+
+//-if neither ask for another input 
+
+//-1 beats 3/ 2 beats 1/ 3 beats 2
+
+
+
+//-if number are same select again
+
+//-add 1 to score for user or computer if win
+
+//-repeat 5 times
+ 
+
+  </script>
+</body>
+</html>
