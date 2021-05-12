@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>Page Title</title>
+
+</head>
+
+<button class="selection" data-selection="rock">Rock</button>
+<button class="selection" data-selection="paper" >Paper</button>
+<button class="selection" data-selection="scissors" >Scissors</button>
+<body>
+
+  <div class="results" id="computerScore">PC: </div>
+  <div class="results" id="userScore">You: </div>
+
+  <div class="results" id="userChoice"></div>
+  <div class="results" id="computerChoice"></div>
+  <div class="results" id="winner"></div>
+
+  
+
+
+
+<script>
+
+let player = 0;
+let PC = 0;
+
+
+const selectionButtons = document.querySelectorAll(".selection");
+selectionButtons.forEach(selectionButton => selectionButton.addEventListener("click", function(e) {
+  const userChoice = selectionButton.dataset.selection;
+  getUserChoice(userChoice);
+}))
+
+
+function getUserChoice(selection) {
+  
+  const computerChoice = getComputerChoice();
+  const userChoice = selection;
+
+  document.getElementById("userChoice").innerText = `You played ${userChoice}!!`;
+  document.getElementById("computerChoice").innerText = `The Computer played ${computerChoice}!!`;
+
+  if (userChoice === computerChoice){
+        document.getElementById("winner").innerText = "You Tied :/";
+        }
+        else if (userChoice === 'rock' && computerChoice === 'scissors'){
+        document.getElementById("winner").innerText = "You WON!!!!!";
+        player++;
+        }
+        else if (userChoice === 'paper' && computerChoice === 'rock'){
+        document.getElementById("winner").innerText = "You WON!!!!!";
+        player++;
+        }
+        else if (userChoice === 'scissors' && computerChoice === 'paper'){
+        document.getElementById("winner").innerText = "You WON!!!!!";
+        player++;
+        }
+        else if (userChoice === 'rock' && computerChoice === 'paper'){
+        document.getElementById("winner").innerText = "...You Lost :(((((";
+        PC++;
+        }
+        else if (userChoice === 'paper' && computerChoice === 'scissors'){
+        document.getElementById("winner").innerText = "...You Lost :(((((";
+        PC++;
+        }
+        else if (userChoice === 'scissors' && computerChoice === 'rock'){
+        document.getElementById("winner").innerText = "...You Lost :(((((";
+        PC++;
+        }
+
+        document.getElementById("computerScore").innerText = `PC: ${PC}`;
+        document.getElementById("userScore").innerText = `You: ${player}`;
+        
+        if(PC == 5 || player == 5) {
+          alert('GAME OVERRRRR ------ F5 to play again :)');
+          PC = 0;
+          player = 0;
+        }
+}
+
+
+
+function getComputerChoice() { 
+    let randomNum = Math.round(Math.random()) + Math.round(Math.random());
+    let choiceStack = ['rock', 'paper', 'scissors'];
+    return choiceStack[randomNum];
+}
+
+
+
+
+
+  </script>
+</body>
+</html>

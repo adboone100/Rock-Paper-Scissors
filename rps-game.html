@@ -22,7 +22,7 @@ let player = 0;
 let PC = 0;
 
 
-let getComputerChoice = () => {
+let getComputerChoice = () => { 
     let randomNum = Math.round(Math.random()) + Math.round(Math.random());
     let choiceStack = ['rock', 'paper', 'scissors'];
     return choiceStack[randomNum];
@@ -44,7 +44,7 @@ let getUserChoice = () => {
 let playGame = (userChoice) => {
     const computerChoice = getComputerChoice();
     const userSelect = getUserChoice();
-    if (Boolean(userSelect)){
+    if (Boolean(userSelect)){           //if user inputs rps it is true, if not false
       console.log('You chose ' + userSelect + ' -------- the computer chose ' + computerChoice);
     }
     else{

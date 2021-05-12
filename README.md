@@ -1,0 +1,1 @@
+First to 5 Rock-Paper-Scissors game versus the computer.
